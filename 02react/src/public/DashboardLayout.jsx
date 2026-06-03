@@ -4,13 +4,18 @@ import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar';
 
 const DashboardLayout = () => {
-    let navLinks = [
+    const navLinks = [
         {label: "Dashboard", link: "dashboard"},
         {label: "Profile", link: "profile"},
     ];
+    const authLinks = [
+    {label: "Register", link: "/register"},
+    {label: "Login", link: "/login"},
+
+  ];
   return (
     <>
-    <Navbar navLinks={navLinks}/>
+    <Navbar navLinks={navLinks} authLinks={authLinks}/>
     <main>
         <Outlet/>
     </main>

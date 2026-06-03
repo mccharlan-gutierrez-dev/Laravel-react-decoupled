@@ -45,6 +45,7 @@ const Navbar = ({navLinks, authLinks}) => {
        
 
        ))}
+       <input type="checkbox" value="synthwave" className="toggle theme-controller" />
   </div>
 </div>
   )
