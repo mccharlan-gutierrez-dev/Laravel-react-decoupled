@@ -20,9 +20,10 @@ import { AuthProvider } from './context/AuthContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<AuthProvider>
+
     <BrowserRouter>
-    <Routes>
+    <AuthProvider>
+      <Routes>
       <Route element = {<PublicLayout/>}>
         <Route path='/' element = {<Home/>} />
         <Route path='contact' element = {<Contact/>} />
@@ -41,8 +42,10 @@ createRoot(document.getElementById('root')).render(
       </Route>
 
     </Routes>
+    </AuthProvider>
+    
     </BrowserRouter>
-</AuthProvider> 
+
   </StrictMode>,
 )
 // comment

@@ -1,21 +1,38 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
+import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [name,setName] = useState("");
   const [email,setEmail] = useState("samplae@email.com");
   const [password,setPassword] = useState("");
   const [confirmPassword,setConfirmPassword] = useState("");
+  const {login} = useAuth();
   const navigate = useNavigate();
 
-  function login(){
+  // function login(){
+  //   navigate("/dashboard");
+  // }
+
+  function handleSubmit(e){
+    e.preventDefault();
+
+    const user = {
+      id: 1,
+      name: "Charlan",
+      email,
+    };
+
+    login(user);
     navigate("/dashboard");
   }
+
 
   return (
 <div className="hero bg-base-200 min-h-screen">
   <div className="hero-content flex-col lg:flex-row-reverse">
-    <form action= {login} >
+    {/* <form action= {login} > */}
+    <form onSubmit= {handleSubmit} >
       <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Login now!</h1>
       <p className="py-6">

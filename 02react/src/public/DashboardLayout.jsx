@@ -2,20 +2,19 @@ import React from 'react'
 
 import { Outlet } from 'react-router'
 import Navbar from '../components/Navbar';
+import { useAuth } from '../context/AuthContext';
 
 const DashboardLayout = () => {
+  const {user} = useAuth();
+
     const navLinks = [
         {label: "Dashboard", link: "dashboard"},
         {label: "Profile", link: "profile"},
     ];
-    const authLinks = [
-    {label: "Register", link: "/register"},
-    {label: "Login", link: "/login"},
-
-  ];
+    
   return (
     <>
-    <Navbar navLinks={navLinks} authLinks={authLinks}/>
+    <Navbar navLinks={navLinks} user={user} />
     <main>
         <Outlet/>
     </main>

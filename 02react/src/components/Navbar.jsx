@@ -1,10 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router'
 
-const Navbar = ({navLinks, authLinks}) => {
+const Navbar = ({navLinks, authLinks, user}) => {
   
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+<div className="navbar bg-base-100 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,17 +37,44 @@ const Navbar = ({navLinks, authLinks}) => {
        ))}
     </ul>
   </div>
-  <div className="navbar-end gap-2">
-    {authLinks.map((link, index) => (
-        
-          
-         <NavLink to={link.link} key={index}>{link.label}</NavLink>
-       
-
+  {/* <div className="navbar-end gap-2">
+    {user && <span> {user.name} </span> }
+    {authLinks?.map((link, index) => (
+         <NavLink to={link.link} key={index}>
+          {link.label}
+          </NavLink>
        ))}
        
+  </div> */}
+  <div className='navbar-end gap-2'>
+    <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="resume_pic.png" />
+        </div>
+      </div>
+      <ul
+        tabIndex="-1"
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li>
+          <a className="justify-between">
+            Profile
+            {/* <span className="badge">New</span> */}
+            {user && <span className='badge'> {user.name} </span> }
+          </a>
+        </li>
+        
+        <li><a>Logout</a></li>
+      </ul>
+    </div>
   </div>
 </div>
+
+
+
+
   )
 }
 
