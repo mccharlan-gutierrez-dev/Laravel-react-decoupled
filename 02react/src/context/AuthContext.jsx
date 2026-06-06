@@ -12,6 +12,12 @@ export function AuthProvider({children}) {
       setUser(JSON.parse(localStorage.getItem("user")));
     },[]);
 
+    const register = (userData) => {
+      setUser(userData);
+      localStorage.setItem("user", JSON.stringify(userData));
+      navigate("/login");
+    }
+
     const login = (userData) => {
       setUser(userData);
       localStorage.setItem("user", JSON.stringify(userData));
@@ -24,8 +30,12 @@ export function AuthProvider({children}) {
       navigate("/login");
 
     }
+    
+    const isAuthenticated = () => {
+      return !!user;
+    }
 
-    const value = {user, login, logout, isAuthenticated: !!user};
+    const value = {user,register, login, logout, isAuthenticated: !!user};
 
 
   return <AuthContext.Provider value={value} > {children} </AuthContext.Provider>

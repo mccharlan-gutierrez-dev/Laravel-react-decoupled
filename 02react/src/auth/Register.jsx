@@ -1,20 +1,38 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
+import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword ] = useState("");
+  const {register} = useAuth();
   const navigate = useNavigate();
 
-  function register(){
+  // function register(){
+  //   navigate("/login");
+  // }
+
+  function handleSubmit(e){
+    e.preventDefault();
+
+    const user = {
+      id: 1,
+      email,
+      password,
+
+    };
+
+    register(user);
     navigate("/login");
+
   }
 
 
   return (
-<form action={register} className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <fieldset>
+<div >
+  <form className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4" onSubmit= {handleSubmit}>
+    <fieldset>
     <label htmlFor="">Register</label>
   </fieldset>
   <fieldset className="fieldset">
@@ -42,7 +60,10 @@ const Register = () => {
 
   <button type = "submit" className="btn btn-neutral mt-4" type="submit">Register</button>
  
-</form>
+
+  </form>
+  
+</div>
   )
 }
 

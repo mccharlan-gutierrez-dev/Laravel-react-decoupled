@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router'
+import { useAuth } from '../context/AuthContext'
 
 const Navbar = ({navLinks, authLinks, user}) => {
+  const {logout} = useAuth();
   
   return (
 <div className="navbar bg-base-100 shadow-sm">
@@ -47,11 +49,12 @@ const Navbar = ({navLinks, authLinks, user}) => {
        
   </div> */}
   <div className='navbar-end gap-2'>
-    <div className="dropdown dropdown-end">
+    { user && (
+      <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
         <div className="w-10 rounded-full">
           <img
-            alt="Tailwind CSS Navbar component"
+            alt="Profile"
             src="resume_pic.png" />
         </div>
       </div>
@@ -66,10 +69,19 @@ const Navbar = ({navLinks, authLinks, user}) => {
           </a>
         </li>
         
-        <li><a>Logout</a></li>
+        <li>
+          <button onClick={logout}>Logout</button>
+        </li>
       </ul>
     </div>
+    
+    )
+
+    }
+
+    
   </div>
+
 </div>
 
 

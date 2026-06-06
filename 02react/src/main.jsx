@@ -24,6 +24,10 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
     <AuthProvider>
       <Routes>
+      <Route>
+        <Route path='not-found' element={<Notfound/>} />
+      </Route>
+
       <Route element = {<PublicLayout/>}>
         <Route path='/' element = {<Home/>} />
         <Route path='contact' element = {<Contact/>} />
@@ -33,7 +37,6 @@ createRoot(document.getElementById('root')).render(
         <Route path='notfound' element = {<Notfound/>} />
         <Route path='register' element = {<Register/>} />
         <Route path='login' element = {<Login/>} />
-       
       </Route>
 
       <Route element = {<DashboardLayout/>}>
@@ -48,5 +51,4 @@ createRoot(document.getElementById('root')).render(
 
   </StrictMode>,
 )
-// comment
-// test
+
